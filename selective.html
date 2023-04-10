@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Heaven's Chosen One</title>
+    <style>
+        .bold {
+            font-weight: bolder;
+            font-size: 75px;
+            color: red;
+        }
+
+        body {
+			background-color: black;
+      color: white;
+			font-family: Arial, sans-serif;
+		}
+
+        button {
+			background-color: white;
+			color: black;
+			border: none;
+			padding: 10px 20px;
+			cursor: pointer;
+			float: left;
+		}
+		button:hover {
+			background-color: darkred;
+      color: white;
+      font-weight: bold;
+		}
+    </style>
+  </head>
+  <body>
+    <h1>The chosen one:</h1>
+    <p id="result">Click the button below to start choosing</p>
+    <button id="random-button">Start choosing</button>
+
+    <script>
+      const values = ['Tri', 'Samuel', 'Bader', 'Tesfaye','Jonathan','Jason','Sataporn','Anthoni','Mariia','Vitali','Aldrich','Bryan','Meixuan','Simo','Zarema','Parul','Madina'];
+
+      const resultEl = document.getElementById("result");
+      const buttonEl = document.getElementById("random-button");
+
+      buttonEl.addEventListener("click", () => {
+        const index = Math.floor(Math.random() * values.length);
+        const selected = values[index] ?? 'No one left';
+        values.splice(index, 1);
+
+        resultEl.innerHTML = `Selected: <span class="bold">${selected}</span>`;
+
+        const removedEl = document.createElement("p");
+        removedEl.textContent = `Remaining candidates: ${values.join(", ")}`;
+        resultEl.appendChild(removedEl);
+      });
+    </script>
+  </body>
+</html>
